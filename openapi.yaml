@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: ToDo List API
+  description: Microservicio para administrar tareas (ToDo List)
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+
+paths:
+  /api/tasks:
+    get:
+      summary: Obtener todas las tareas
+      tags:
+        - Tasks
+      responses:
+        "200":
+          description: Lista de tareas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+
+    post:
+      summary: Crear una nueva tarea
+      tags:
+        - Tasks
+      requestBody:
+        description: Datos de la nueva tarea
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewTask"
+      responses:
+        "201":
+          description: Tarea creada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+
+  /api/tasks/{id}:
+    put:
+      summary: Actualizar una tarea existente
+      tags:
+        - Tasks
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID de la tarea
+      requestBody:
+        description: Datos actualizados
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTask"
+      responses:
+        "200":
+          description: Tarea actualizada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+
+    delete:
+      summary: Eliminar una tarea
+      tags:
+        - Tasks
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID de la tarea
+      responses:
+        "204":
+          description: Tarea eliminada correctamente
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        completed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - _id
+        - title
+        - completed
+
+    NewTask:
+      type: object
+      properties:
+        title:
+          type: string
+      required:
+        - title
+
+    UpdateTask:
+      type: object
+      properties:
+        title:
+          type: string
+        completed:
+          type: boolean
