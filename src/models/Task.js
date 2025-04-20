@@ -10,6 +10,10 @@ const TaskSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    username: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
