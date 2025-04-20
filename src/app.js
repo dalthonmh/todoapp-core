@@ -12,7 +12,12 @@ const swaggerDocument = yaml.load("./openapi.yaml");
 
 connectDB(process.env.MONGODB_URI);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // o 'http://web:8080' para ser más seguro
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/api/tasks", taskRoutes);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
