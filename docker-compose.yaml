@@ -7,8 +7,6 @@ services:
       - MONGODB_URI=mongodb://mongo:27017/todoapp
     depends_on:
       - mongo
-    volumes:
-      - .:/app
     restart: always
 
   mongo:
