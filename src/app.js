@@ -20,9 +20,9 @@ app.use(
 );
 app.use(express.json());
 app.use("/api/tasks", taskRoutes);
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.use("/api/tasks/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-app.get("/", (req, res) => {
+app.get("/api/tasks/health", (req, res) => {
   res.send("Todo List Microservice is running");
 });
 
