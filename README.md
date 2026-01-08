@@ -1,6 +1,6 @@
 # ToDo-List Core
 
-RESTful microservice to manage tasks (ToDo List) using **Node.js**, **Express**, **MongoDB**, and **Docker**. Includes automatic API documentation with **Swagger (OpenAPI)**.
+RESTful microservice to manage tasks (ToDo List) using **Node.js**, **Express**, **MongoDB**, and **Docker**. Includes documentation with **Swagger (OpenAPI)**.
 
 ---
 
@@ -14,7 +14,7 @@ RESTful microservice to manage tasks (ToDo List) using **Node.js**, **Express**,
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) (v18+)
+- [Node.js](https://nodejs.org/) (v24+)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -28,5 +28,5 @@ git clone https://github.com/dalthonmh/todoapp-core.git
 cd todoapp-core
 
 # Build and start the services
-docker-compose up --build
+docker compose up -d --build
 ```
