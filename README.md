@@ -1,6 +1,6 @@
-# ToDo-List Core
+# ToDo-APP Core
 
-RESTful microservice to manage tasks (ToDo List) using **Node.js**, **Express**, **MongoDB**, and **Docker**. Includes documentation with **Swagger (OpenAPI)**.
+RESTful microservice to manage tasks (ToDo App) using **Node.js**, **Express**, **MongoDB**, and **Docker**. Includes documentation with **Swagger (OpenAPI)**.
 
 ---
 
@@ -16,7 +16,6 @@ RESTful microservice to manage tasks (ToDo List) using **Node.js**, **Express**,
 
 - [Node.js](https://nodejs.org/) (v24+)
 - [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
 
 ---
 

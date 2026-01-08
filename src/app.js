@@ -23,7 +23,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/tasks/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.get("/api/tasks/health", (req, res) => {
-  res.send("Todo List Microservice is running");
+  res.send("ToDo-APP Core Microservice is running");
 });
 
 app.listen(PORT, () => {
