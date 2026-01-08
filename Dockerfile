@@ -1,10 +1,10 @@
-FROM node:18-alpine3.18
+FROM node:24-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
-
+RUN yarn install --production --frozen-lockfile
 COPY . .
+EXPOSE 3000
 
-CMD ["node", "src/app.js"]
+CMD ["yarn", "start"]

@@ -14,7 +14,7 @@ connectDB(process.env.MONGODB_URI);
 
 app.use(
   cors({
-    origin: "*", // o 'http://web:8080' para ser más seguro
+    origin: "*", // or 'http://web:8080'
     credentials: true,
   })
 );

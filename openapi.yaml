@@ -1,21 +1,24 @@
 openapi: 3.0.0
 info:
   title: ToDo List API
-  description: Microservicio para administrar tareas (ToDo List)
+  description: Microservice to manage tasks
   version: 1.0.0
 servers:
   - url: http://localhost:3000
-    description: Servidor local
+    description: Local server
+
+  - url: http://todoapp.test
+    description: Local with ingress
 
 paths:
   /api/tasks:
     get:
-      summary: Obtener todas las tareas
+      summary: Get all tasks
       tags:
         - Tasks
       responses:
         "200":
-          description: Lista de tareas
+          description: Tasks list
           content:
             application/json:
               schema:
@@ -24,11 +27,11 @@ paths:
                   $ref: "#/components/schemas/Task"
 
     post:
-      summary: Crear una nueva tarea
+      summary: Create new task
       tags:
         - Tasks
       requestBody:
-        description: Datos de la nueva tarea
+        description: New task data
         required: true
         content:
           application/json:
@@ -36,7 +39,7 @@ paths:
               $ref: "#/components/schemas/NewTask"
       responses:
         "201":
-          description: Tarea creada correctamente
+          description: Task created successfully
           content:
             application/json:
               schema:
@@ -44,7 +47,7 @@ paths:
 
   /api/tasks/{id}:
     put:
-      summary: Actualizar una tarea existente
+      summary: Update task
       tags:
         - Tasks
       parameters:
@@ -53,9 +56,9 @@ paths:
           required: true
           schema:
             type: string
-          description: ID de la tarea
+          description: Task ID
       requestBody:
-        description: Datos actualizados
+        description: Data to change
         required: true
         content:
           application/json:
@@ -63,14 +66,14 @@ paths:
               $ref: "#/components/schemas/UpdateTask"
       responses:
         "200":
-          description: Tarea actualizada correctamente
+          description: Task updated successfully
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Task"
 
     delete:
-      summary: Eliminar una tarea
+      summary: Delete task
       tags:
         - Tasks
       parameters:
@@ -79,10 +82,10 @@ paths:
           required: true
           schema:
             type: string
-          description: ID de la tarea
+          description: Task ID
       responses:
         "204":
-          description: Tarea eliminada correctamente
+          description: Task deleted successfully
 
 components:
   schemas:
