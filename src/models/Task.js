@@ -18,4 +18,17 @@ const TaskSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Make the legacy core service return the same shape as the improved task service:
+// Use "id" instead of Mongo's "_id" in JSON responses.
+TaskSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: (doc, ret) => {
+    ret.id = ret._id.toString();
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+});
+
 module.exports = mongoose.model("Task", TaskSchema);
