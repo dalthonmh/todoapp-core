@@ -4,8 +4,11 @@ const Task = require("../models/Task");
 const auth = require("../middlewares/auth");
 
 // GET all tasks
+// Sorted so that incomplete tasks (completed = false) appear first (top of the list),
+// and completed tasks (completed = true) appear at the bottom.
+// This matches the ordering used in the todoapp-task service.
 router.get("/", async (req, res) => {
-  const tasks = await Task.find();
+  const tasks = await Task.find().sort({ completed: 1, createdAt: -1 });
   res.json(tasks);
 });
 
